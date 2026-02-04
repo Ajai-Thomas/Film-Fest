@@ -1,27 +1,31 @@
+/* src/components/Hero.tsx */
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-accent overflow-hidden">
       
-      {/* Grain + vignette */}
+      {/* Grain + vignette (z-1 and z-2) */}
       <div className="hero-texture" />
       <div className="hero-vignette" />
 
-      {/* BLACK BOTTOM FADE */}
-      <div className="hero-bottom-fade" />
+      {/* BLACK BOTTOM GRADIENT
+         - h-56: Reduced height (was h-96)
+         - z-5:  Sits BEHIND the content (z-10) so text is visible
+      */}
+      <div className="absolute bottom-0 left-0 right-0 h-56 bg-gradient-to-t from-black via-black/60 to-transparent z-5 pointer-events-none" />
 
-      {/* Content */}
+      {/* Content (z-10) */}
       <div className="relative z-10 text-center pt-16">
 
         {/* MAIN TITLE */}
         <h1
           className="
             font-quittance
-            text-[clamp(4rem,9.2vw,8.6rem)]   /* ⬅ reduced */
+            text-[clamp(4rem,9.2vw,8.6rem)]
             font-extrabold
-            tracking-[-0.045em]              /* ⬅ slightly tighter */
+            tracking-[-0.045em]
             leading-[1]
-            scale-y-[1.08]                   /* ⬅ reduced from 1.14 */
-            scale-x-[1.03]                   /* ⬅ reduced from 1.06 */
+            scale-y-[1.08]
+            scale-x-[1.03]
             uppercase
             whitespace-nowrap
             text-image-black

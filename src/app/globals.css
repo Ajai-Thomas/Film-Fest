@@ -223,3 +223,22 @@ img {
   pointer-events: none;
   z-index: 6;
 }
+@font-face {
+  font-family: "Ostwall";
+  src: url("/fonts/Ostwall.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+.font-ostwall {
+  font-family: "Ostwall", sans-serif;
+  text-transform: uppercase;
+}
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}

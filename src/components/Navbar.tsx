@@ -56,8 +56,9 @@ export default function Navbar() {
             ${dark ? "text-white" : "text-black"}
           `}
         >
+          {/* Scroll to #films */}
           <a href="#films" className="hover:opacity-60 transition">Films</a>
-          <a href="#screenings" className="hover:opacity-60 transition">Screenings</a>
+          {/* REMOVED: Screenings Link */}
           <a href="#register" className="hover:opacity-60 transition">Register</a>
           <a href="#about" className="hover:opacity-60 transition">About</a>
         </div>
