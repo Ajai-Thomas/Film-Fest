@@ -1,3 +1,4 @@
+/* src/app/register/[slug]/page.tsx */
 "use client";
 
 import { use, useState } from "react";
@@ -11,7 +12,7 @@ export default function RegisterPage({ params }: { params: Promise<{ slug: strin
 
   const [form, setForm] = useState({
     name: "",
-    branch: "",
+    branch: "Civil Engineering", // Default to first option
     year: "1",
     contact: "",
   });
@@ -33,6 +34,18 @@ export default function RegisterPage({ params }: { params: Promise<{ slug: strin
     console.log("Registered:", { ...form, film: film.title });
     setSubmitted(true);
   };
+
+  const branches = [
+    "Civil Engineering",
+    "Mechanical Engineering",
+    "Electrical & Electronics Engineering",
+    "Electronics & Communication Engineering",
+    "Chemical Engineering",
+    "Computer Science & Engineering",
+    "Computer Science & Engineering (AI)",
+    "Electrical & Computer Engineering",
+    "Barch."
+  ];
 
   return (
     <main className="min-h-screen bg-black text-white selection:bg-accent selection:text-black">
@@ -114,35 +127,50 @@ export default function RegisterPage({ params }: { params: Promise<{ slug: strin
                   </div>
 
                   {/* Branch & Year Row */}
-                  <div className="grid grid-cols-2 gap-6">
-                    <div className="relative group">
-                      <input
-                        type="text"
-                        required
-                        placeholder=" "
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    {/* BRANCH DROPDOWN */}
+                    <div className="relative">
+                      <select
                         value={form.branch}
                         onChange={(e) => setForm({ ...form, branch: e.target.value })}
-                        className="peer w-full bg-transparent border-b border-white/20 py-3 text-lg focus:outline-none focus:border-accent transition-colors"
-                      />
-                       <label className="absolute left-0 top-3 text-white/40 text-sm transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-accent peer-[&:not(:placeholder-shown)]:-top-4 peer-[&:not(:placeholder-shown)]:text-xs">
+                        className="w-full bg-transparent border-b border-white/20 py-3 text-lg focus:outline-none focus:border-accent transition-colors text-white appearance-none"
+                      >
+                        {branches.map((branch) => (
+                          <option key={branch} value={branch} className="bg-black text-white">
+                            {branch}
+                          </option>
+                        ))}
+                      </select>
+                      <label className="absolute left-0 -top-4 text-white/40 text-xs">
                         Branch
                       </label>
+                      {/* Custom Arrow */}
+                      <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-white/40 text-xs">
+                        ▼
+                      </div>
                     </div>
 
+                    {/* YEAR DROPDOWN */}
                     <div className="relative">
                       <select
                         value={form.year}
                         onChange={(e) => setForm({ ...form, year: e.target.value })}
-                        className="w-full bg-transparent border-b border-white/20 py-3 text-lg focus:outline-none focus:border-accent transition-colors text-white"
+                        className="w-full bg-transparent border-b border-white/20 py-3 text-lg focus:outline-none focus:border-accent transition-colors text-white appearance-none"
                       >
                         <option value="1" className="bg-black text-white">Year 1</option>
                         <option value="2" className="bg-black text-white">Year 2</option>
                         <option value="3" className="bg-black text-white">Year 3</option>
                         <option value="4" className="bg-black text-white">Year 4</option>
+                        <option value="5" className="bg-black text-white">Year 5</option>
                       </select>
                       <label className="absolute left-0 -top-4 text-white/40 text-xs">
                         Year of Study
                       </label>
+                       {/* Custom Arrow */}
+                       <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-white/40 text-xs">
+                        ▼
+                      </div>
                     </div>
                   </div>
 
@@ -165,9 +193,13 @@ export default function RegisterPage({ params }: { params: Promise<{ slug: strin
                   <button
                     type="submit"
                     className="
-                      w-full bg-white text-black font-ostwall uppercase text-xl py-4 
-                      hover:bg-[#B00000] hover:text-black 
-                      transition-all mt-4 tracking-wider
+                      w-full 
+                      bg-[#b00000] text-white 
+                      font-ostwall uppercase text-xl py-4 
+                      hover:bg-black hover:text-white 
+                      transition-all duration-300 ease-out 
+                      mt-8 tracking-wider 
+                      shadow-lg hover:shadow-xl
                     "
                   >
                     Confirm Registration
