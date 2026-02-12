@@ -1,6 +1,8 @@
+/* src/app/page.tsx */
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import FilmsSection from "../components/FilmsSection";
+import PromoSection from "../components/PromoSection"; // Import the new component
 import Reveal from "../components/Reveal";
 
 export default function Home() {
@@ -8,13 +10,15 @@ export default function Home() {
     <>
       <Navbar />
       
-      {/* The Hero loads immediately, so we can use a slight delay if we want, 
-          or just let Framer Motion handle the initial fade in */}
       <Reveal>
         <Hero />
       </Reveal>
 
-      {/* This section will trigger its animation only when you scroll down to it */}
+      {/* NEW PROMO SECTION */}
+      <Reveal>
+        <PromoSection />
+      </Reveal>
+
       <Reveal>
         <FilmsSection />
       </Reveal>

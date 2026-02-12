@@ -1,24 +1,19 @@
-/* src/app/schedule/page.tsx */
 "use client";
 
 import { useState } from "react";
 import Navbar from "../../components/Navbar";
 import Reveal from "../../components/Reveal";
 
-// --- DATA FROM PDF ---
 const scheduleData = [
   {
-    day: "Day 01",
     date: "Feb 13 (Fri)",
     events: [
-      { time: "06:30 PM", title: "Opening Ceremony", location: "Auditorium" },
+      { time: "06:30 PM", title: "Inaugural Ceremony", location: "Auditorium" },
     ],
   },
   {
-    day: "Day 02",
     date: "Feb 14 (Sat)",
     events: [
-      // Morning Slots (8:00 AM - 12:00 PM)
       { time: "08:00 AM", title: "Corpse Bride", location: "Arch Seminar Hall" },
       { time: "08:00 AM", title: "50/50", location: "EEE Seminar Hall" },
       { time: "08:00 AM", title: "Flow", location: "Chemical Seminar Hall" },
@@ -26,15 +21,11 @@ const scheduleData = [
       { time: "09:30 AM", title: "City of God", location: "Chemical Seminar Hall" },
       { time: "11:30 AM", title: "Lady Bird", location: "Arch Seminar Hall" },
       { time: "11:40 AM", title: "Atonement", location: "Chemical Seminar Hall" },
-      
-      // Afternoon Slots (12:00 PM - 4:00 PM)
-      { time: "01:05 PM", title: "KD Engira Karuppudurai", location: "Arch Seminar Hall" },
+      { time: "01:05 PM", title: "KD (A) Karuppudurai", location: "Arch Seminar Hall" },
       { time: "01:45 PM", title: "Silenced", location: "Chemical Seminar Hall" },
       { time: "03:00 PM", title: "Welcome Home", location: "EEE Seminar Hall" },
       { time: "03:10 PM", title: "Call Me By Your Name", location: "Arch Seminar Hall" },
       { time: "03:30 PM", title: "The Lunchbox", location: "Auditorium" },
-
-      // Evening Slots (4:00 PM+)
       { time: "05:00 PM", title: "A Pregnant Widow", location: "APJ Hall" },
       { time: "05:00 PM", title: "Perfect Blue", location: "PTA Hall" },
       { time: "05:15 PM", title: "Forgotten", location: "EEE Seminar Hall" },
@@ -42,10 +33,8 @@ const scheduleData = [
     ],
   },
   {
-    day: "Day 03",
     date: "Feb 15 (Sun)",
     events: [
-      // Morning Slots (7:00 AM - 10:00 AM)
       { time: "07:00 AM", title: "Fan Show: Marvel/DC", location: "APJ Hall" },
       { time: "07:00 AM", title: "Be With You", location: "Auditorium" },
       { time: "07:00 AM", title: "Gran Torino", location: "PTA Hall" },
@@ -56,8 +45,6 @@ const scheduleData = [
       { time: "09:00 AM", title: "Grave of the Fireflies", location: "Auditorium" },
       { time: "09:00 AM", title: "Battle Royale", location: "PTA Hall" },
       { time: "09:35 AM", title: "Bulbbul", location: "EEE Seminar Hall" },
-
-      // Mid-Day Slots (10:00 AM - 2:00 PM)
       { time: "10:00 AM", title: "Fan Show: Marvel/DC", location: "APJ Hall" },
       { time: "10:45 AM", title: "Audience Favorite Movie", location: "Auditorium" },
       { time: "11:05 AM", title: "Gargi", location: "PTA Hall" },
@@ -66,8 +53,6 @@ const scheduleData = [
       { time: "12:10 PM", title: "Monkey Man", location: "Arch Seminar Hall" },
       { time: "12:30 PM", title: "Chokher Bali", location: "Chemical Seminar Hall" },
       { time: "01:05 PM", title: "Victoria", location: "EEE Seminar Hall" },
-
-      // Afternoon/Evening Slots (2:30 PM+)
       { time: "02:30 PM", title: "Fan Show: Mammootty/Mohanlal", location: "Auditorium" },
       { time: "05:30 PM", title: "Fan Show: Mammootty/Mohanlal", location: "Auditorium" },
     ],
@@ -81,7 +66,6 @@ export default function SchedulePage() {
     <main className="min-h-screen bg-black text-white selection:bg-accent selection:text-black">
       <Navbar />
 
-      {/* BACKGROUND TEXTURE */}
       <div className="fixed inset-0 pointer-events-none opacity-[0.15] z-0" 
            style={{ backgroundImage: 'url("/textures/grain.png")', backgroundSize: '260px' }} 
       />
@@ -89,18 +73,14 @@ export default function SchedulePage() {
       <div className="relative z-10 pt-40 px-6 pb-20 max-w-6xl mx-auto">
         
         <Reveal>
-          {/* HEADER */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20 border-b border-white/20 pb-8">
             <div>
-              <span className="block text-accent text-xs tracking-[0.4em] font-bold uppercase mb-4">
-                Program Timeline
-              </span>
+              {/* Removed "Program Timeline" label */}
               <h1 className="text-6xl md:text-8xl font-ostwall uppercase leading-none">
                 Festival<br />Schedule
               </h1>
             </div>
 
-            {/* DAY TABS */}
             <div className="flex flex-wrap gap-4">
               {scheduleData.map((item, index) => (
                 <button
@@ -121,7 +101,6 @@ export default function SchedulePage() {
           </div>
         </Reveal>
 
-        {/* EVENTS LIST */}
         <div className="space-y-4 min-h-[400px]">
           {scheduleData[activeDay].events.map((event, i) => (
             <Reveal key={`${activeDay}-${i}`} delay={i * 0.05}>
@@ -132,14 +111,12 @@ export default function SchedulePage() {
                   cursor-default
                 "
               >
-                {/* Time */}
                 <div className="w-40 shrink-0 mb-2 md:mb-0">
                   <span className="font-ostwall text-xl md:text-2xl text-white/40 group-hover:text-accent transition-colors">
                     {event.time}
                   </span>
                 </div>
 
-                {/* Info */}
                 <div className="flex-grow">
                   <h3 className="text-xl md:text-2xl font-ostwall uppercase group-hover:translate-x-2 transition-transform duration-300">
                     {event.title}

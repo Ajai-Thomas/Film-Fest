@@ -1,3 +1,5 @@
+/* src/app/globals.css */
+
 /* ================================
    Tailwind CSS v4
 ================================ */
@@ -25,12 +27,36 @@
 }
 
 /* ================================
+   LENIS SMOOTH SCROLL (REQUIRED)
+================================ */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* ================================
    BASE STYLES
 ================================ */
 html,
 body {
   width: 100%;
-  height: 100%;
+  /* FIXED: Changed height: 100% to min-height: 100% so it can grow and scroll */
+  min-height: 100%; 
   background-color: var(--black);
   color: var(--white);
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
@@ -41,7 +67,7 @@ body {
 
 body {
   margin: 0;
-  overflow-x: hidden;
+  overflow-x: hidden; /* Prevents horizontal scroll */
 }
 
 /* ================================
@@ -177,10 +203,10 @@ img {
   user-select: none;
   pointer-events: none;
 }
+
 /* ================================
    B&W IMAGE + BLACK INK OVERLAY
 ================================ */
-
 .text-image-black {
   color: transparent;
 
@@ -200,16 +226,15 @@ img {
   background-clip: text;
   -webkit-background-clip: text;
 
-  /* THIS IS THE KEY PART */
   filter:
     grayscale(100%)
     contrast(1.25)
     brightness(0.82);
 }
+
 /* ================================
    HERO BLACK BLEED (POSTER STYLE)
 ================================ */
-
 .hero-black-bleed {
   position: absolute;
   inset: 0;
@@ -223,6 +248,7 @@ img {
   pointer-events: none;
   z-index: 6;
 }
+
 @font-face {
   font-family: "Ostwall";
   src: url("/fonts/Ostwall.otf") format("opentype");
@@ -230,10 +256,12 @@ img {
   font-style: normal;
   font-display: swap;
 }
+
 .font-ostwall {
   font-family: "Ostwall", sans-serif;
   text-transform: uppercase;
 }
+
 .scrollbar-hide::-webkit-scrollbar {
     display: none;
 }

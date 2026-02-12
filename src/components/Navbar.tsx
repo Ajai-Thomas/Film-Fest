@@ -1,4 +1,3 @@
-/* src/components/Navbar.tsx */
 "use client";
 
 import { useEffect, useState } from "react";
@@ -49,18 +48,31 @@ export default function Navbar() {
 
       <div className="relative z-10 flex items-center justify-between px-8 py-3">
         
-        {/* LOGO - ALWAYS WHITE */}
-        <Link href="/">
+        {/* LOGO SECTION */}
+        <Link 
+          href="/" 
+          className="flex items-center gap-5 hover:opacity-80 transition-opacity cursor-pointer"
+        >
+          {/* TKM FLF Logo */}
           <Image
             src="/FF-26(white).png" 
             alt="TKM FLF 26"
             width={64}
             height={20}
-            className="select-none hover:opacity-80 transition-opacity"
+            className="select-none object-contain"
+          />
+          
+          {/* FD Logo - SIZE INCREASED */}
+          <Image
+             src="/logo/F&D White.png" 
+             alt="Film Division"
+             width={48} /* Changed from 32 */
+             height={48} /* Changed from 32 */
+             className="select-none object-contain"
           />
         </Link>
 
-        {/* NAV LINKS - ALWAYS WHITE */}
+        {/* NAV LINKS */}
         <div
           className="
             flex gap-10
