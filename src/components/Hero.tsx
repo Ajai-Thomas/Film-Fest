@@ -1,19 +1,30 @@
 /* src/components/Hero.tsx */
+"use client";
+
+import { useLenis } from "lenis/react";
+
 export default function Hero() {
+  const lenis = useLenis();
+
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    lenis?.scrollTo(targetId, { 
+      duration: 1.5, 
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) 
+    });
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-accent overflow-hidden">
       
-      {/* Grain + vignette (z-1 and z-2) */}
+      {/* Grain + vignette */}
       <div className="hero-texture" />
       <div className="hero-vignette" />
 
-      {/* BLACK BOTTOM GRADIENT
-         - h-56: Reduced height (was h-96)
-         - z-5:  Sits BEHIND the content (z-10) so text is visible
-      */}
+      {/* BLACK BOTTOM GRADIENT */}
       <div className="absolute bottom-0 left-0 right-0 h-56 bg-gradient-to-t from-black via-black/60 to-transparent z-5 pointer-events-none" />
 
-      {/* Content (z-10) */}
+      {/* Content */}
       <div className="relative z-10 text-center pt-16">
 
         {/* MAIN TITLE */}
@@ -50,7 +61,8 @@ export default function Hero() {
         {/* CTA */}
         <div className="mt-16">
           <a
-            href="#register"
+            href="#films"
+            onClick={(e) => handleScroll(e, "#films")}
             className="
               inline-flex items-center gap-2
               text-black
@@ -60,6 +72,7 @@ export default function Hero() {
               uppercase
               hover:opacity-70
               transition
+              cursor-pointer
             "
           >
             Register for Screening →

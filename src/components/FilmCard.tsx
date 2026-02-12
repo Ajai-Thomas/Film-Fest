@@ -1,8 +1,7 @@
-/* src/components/FilmCard.tsx */
 import Link from "next/link";
 
 type Film = {
-  slug: string; // Added slug prop
+  slug: string;
   title: string;
   director: string;
   poster: string;
@@ -69,17 +68,22 @@ export default function FilmCard({ slug, title, director, poster, index }: Film)
             </p>
           </div>
 
-          {/* Register Button (Changed to Link) */}
+          {/* Register Button */}
           <div className="
             max-h-0 opacity-0 
             group-hover:max-h-[60px] group-hover:opacity-100 
             transition-all duration-500 ease-out
           ">
              <div className="pt-4">
-               {/* LINK TO REGISTRATION PAGE */}
+               {/* LINK TO REGISTRATION PAGE - FIXED HOVER */}
                <Link 
                  href={`/register/${slug}`}
-                 className="inline-block text-[10px] font-black tracking-[0.3em] uppercase bg-white text-black px-2 py-1.5 hover:bg-[#b00000] hover:text-white transition-colors"
+                 className="
+                   inline-block text-[10px] font-black tracking-[0.3em] uppercase 
+                   bg-white text-black px-2 py-1.5 
+                   hover:bg-[#B00000] hover:text-black 
+                   transition-colors
+                 "
                >
                  Register Now
                </Link>

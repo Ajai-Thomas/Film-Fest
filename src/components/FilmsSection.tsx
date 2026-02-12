@@ -3,7 +3,7 @@
 
 import { useRef, useState, useMemo } from "react";
 import FilmCard from "../components/FilmCard";
-import { filmsData } from "../data/films"; // Import shared data
+import { filmsData } from "../data/films"; 
 
 type DayKey = "Day 1" | "Day 2" | "Day 3";
 
@@ -11,9 +11,7 @@ export default function FilmsSection() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [selectedDay, setSelectedDay] = useState<DayKey>("Day 2");
 
-  // Filter films based on selected Day string (e.g., "Day 02")
   const currentFilms = useMemo(() => {
-    // Map dropdown value "Day 2" -> data value "Day 02"
     const dayMap: Record<string, string> = {
       "Day 1": "Day 01",
       "Day 2": "Day 02",
@@ -72,12 +70,12 @@ export default function FilmsSection() {
                      appearance-none bg-transparent text-white font-ostwall text-xl uppercase
                      border border-white/20 px-4 py-3 w-32 text-center cursor-pointer
                      hover:bg-white hover:text-black transition-colors outline-none
-                     [&>option]:bg-black
                    "
                  >
-                   <option value="Day 1">Day 01</option>
-                   <option value="Day 2">Day 02</option>
-                   <option value="Day 3">Day 03</option>
+                   {/* FIXED: Added 'bg-black text-white' explicitly to options */}
+                   <option value="Day 1" className="bg-black text-white">Day 01</option>
+                   <option value="Day 2" className="bg-black text-white">Day 02</option>
+                   <option value="Day 3" className="bg-black text-white">Day 03</option>
                  </select>
                  <div className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-xs opacity-50">▼</div>
                </div>

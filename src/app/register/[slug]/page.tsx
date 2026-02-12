@@ -1,4 +1,3 @@
-/* src/app/register/[slug]/page.tsx */
 "use client";
 
 import { use, useState } from "react";
@@ -8,7 +7,6 @@ import { filmsData } from "../../../data/films";
 import Link from "next/link";
 
 export default function RegisterPage({ params }: { params: Promise<{ slug: string }> }) {
-  // Unwrap params using React.use()
   const { slug } = use(params);
 
   const [form, setForm] = useState({
@@ -20,7 +18,6 @@ export default function RegisterPage({ params }: { params: Promise<{ slug: strin
 
   const [submitted, setSubmitted] = useState(false);
 
-  // Find the film
   const film = filmsData.find((f) => f.slug === slug);
 
   if (!film) {
@@ -33,7 +30,6 @@ export default function RegisterPage({ params }: { params: Promise<{ slug: strin
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate API call
     console.log("Registered:", { ...form, film: film.title });
     setSubmitted(true);
   };
@@ -42,7 +38,6 @@ export default function RegisterPage({ params }: { params: Promise<{ slug: strin
     <main className="min-h-screen bg-black text-white selection:bg-accent selection:text-black">
       <Navbar />
 
-      {/* BACKGROUND TEXTURE */}
       <div 
         className="fixed inset-0 pointer-events-none opacity-[0.1] z-0" 
         style={{ backgroundImage: 'url("/textures/grain.png")', backgroundSize: '260px' }} 
@@ -138,12 +133,12 @@ export default function RegisterPage({ params }: { params: Promise<{ slug: strin
                       <select
                         value={form.year}
                         onChange={(e) => setForm({ ...form, year: e.target.value })}
-                        className="w-full bg-transparent border-b border-white/20 py-3 text-lg focus:outline-none focus:border-accent transition-colors text-white [&>option]:bg-black"
+                        className="w-full bg-transparent border-b border-white/20 py-3 text-lg focus:outline-none focus:border-accent transition-colors text-white"
                       >
-                        <option value="1">Year 1</option>
-                        <option value="2">Year 2</option>
-                        <option value="3">Year 3</option>
-                        <option value="4">Year 4</option>
+                        <option value="1" className="bg-black text-white">Year 1</option>
+                        <option value="2" className="bg-black text-white">Year 2</option>
+                        <option value="3" className="bg-black text-white">Year 3</option>
+                        <option value="4" className="bg-black text-white">Year 4</option>
                       </select>
                       <label className="absolute left-0 -top-4 text-white/40 text-xs">
                         Year of Study
@@ -166,9 +161,14 @@ export default function RegisterPage({ params }: { params: Promise<{ slug: strin
                     </label>
                   </div>
 
+                  {/* SUBMIT BUTTON - FIXED HOVER */}
                   <button
                     type="submit"
-                    className="w-full bg-white text-black font-ostwall uppercase text-xl py-4 hover:bg-accent hover:text-white transition-all mt-4 tracking-wider"
+                    className="
+                      w-full bg-white text-black font-ostwall uppercase text-xl py-4 
+                      hover:bg-[#B00000] hover:text-black 
+                      transition-all mt-4 tracking-wider
+                    "
                   >
                     Confirm Registration
                   </button>
