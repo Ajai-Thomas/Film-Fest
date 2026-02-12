@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default function PromoSection() {
   const containerRef = useRef(null);
-  
+
   // Scroll parallax hooks
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -17,13 +17,13 @@ export default function PromoSection() {
   // Text Parallax
   const y1 = useTransform(scrollYProgress, [0, 1], [100, -100]);
   const y2 = useTransform(scrollYProgress, [0, 1], [50, -50]);
-  
+
   // Poster Animation (Bending/Tilting effect)
   const posterRotate = useTransform(scrollYProgress, [0, 1], [-10, 10]);
   const posterY = useTransform(scrollYProgress, [0, 1], [-50, 50]);
 
   return (
-    <section 
+    <section
       ref={containerRef}
       className="relative min-h-[85vh] flex flex-col items-center justify-center bg-black text-white overflow-hidden py-24 px-6"
       style={{ perspective: "1000px" }} // Adds 3D depth to the scene
@@ -33,13 +33,13 @@ export default function PromoSection() {
 
       {/* --- BENDED POSTER BACKGROUND --- */}
       <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
-         <motion.div 
-           style={{ 
-             y: posterY, 
-             rotateX: 15, // Tilted back
-             rotateY: posterRotate, // Slight rotation on scroll
-           }}
-           className="
+        <motion.div
+          style={{
+            y: posterY,
+            rotateX: 15, // Tilted back
+            rotateY: posterRotate, // Slight rotation on scroll
+          }}
+          className="
              relative 
              w-[65vw] md:w-100 aspect-2/3 
              opacity-50 
@@ -47,26 +47,27 @@ export default function PromoSection() {
              rounded-xl
              overflow-hidden
            "
-         >
-            {/* POSTER IMAGE - Replace '/films/host.jpg' with your promo poster */}
-            <Image 
-              src="/films/masthishka.jpg" 
-              alt="Masthishka Maranam"
-              fill
-              className="object-cover"
-            />
-            
-            {/* SHADOW OVERLAY (Creates the 'Bended' Curve Illusion) */}
-            <div className="absolute inset-0 bg-linear-to-r from-black/80 via-transparent to-black/80 z-10" />
-            
-            {/* RED TINT OVERLAY */}
-            <div className="absolute inset-0 bg-accent mix-blend-multiply opacity-30 z-20" />
-         </motion.div>
+        >
+          {/* POSTER IMAGE - Replace '/films/host.jpg' with your promo poster */}
+          <Image
+            src="/films/masthishka.jpg"
+            alt="Masthishka Maranam"
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover"
+          />
+
+          {/* SHADOW OVERLAY (Creates the 'Bended' Curve Illusion) */}
+          <div className="absolute inset-0 bg-linear-to-r from-black/80 via-transparent to-black/80 z-10" />
+
+          {/* RED TINT OVERLAY */}
+          <div className="absolute inset-0 bg-accent mix-blend-multiply opacity-30 z-20" />
+        </motion.div>
       </div>
 
       {/* --- TEXT CONTENT (Z-10 to sit above poster) --- */}
       <div className="relative z-10 max-w-5xl w-full text-center space-y-12 drop-shadow-lg">
-        
+
         {/* Intro Text */}
         <motion.div style={{ y: y2 }}>
           <p className="font-ostwall text-2xl md:text-4xl text-white/80 uppercase tracking-widest mb-4">
@@ -92,7 +93,7 @@ export default function PromoSection() {
         </motion.div>
 
       </div>
-      
+
       {/* Decorative Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-accent blur-[150px] opacity-[0.1] pointer-events-none z-0" />
 

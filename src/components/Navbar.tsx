@@ -49,63 +49,75 @@ export default function Navbar() {
         <div className="navbar-texture" />
 
         <div className="relative z-10 flex items-center justify-between px-6 md:px-8 py-3">
-          
+
           {/* LOGO SECTION */}
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             className="flex items-center gap-3 md:gap-5 hover:opacity-80 transition-opacity cursor-pointer relative z-50"
             onClick={() => setMobileMenuOpen(false)}
           >
             {/* TKM FLF Logo */}
             <Image
-              src="/FF-26(white).png" 
+              src="/FF-26(white).png"
               alt="TKM FLF 26"
               width={64}
               height={20}
-              className="select-none object-contain w-12 md:w-16"
+              className="select-none object-contain w-12 md:w-16 h-auto"
             />
-            
+
             {/* FD Logo */}
             <Image
-               src="/logo/F&D White.png" 
-               alt="Film Division"
-               width={48}
-               height={48}
-               className="select-none object-contain w-10 md:w-12"
+              src="/logo/F&D White.png"
+              alt="Film Division"
+              width={48}
+              height={48}
+              className="select-none object-contain w-10 md:w-12"
             />
           </Link>
 
+
           {/* DESKTOP NAV LINKS (Hidden on Mobile) */}
-          <div className="hidden md:flex gap-10 text-[11px] tracking-[0.38em] uppercase font-semibold text-white transition-colors duration-500">
-            <Link 
-              href="/#films" 
+          <div className="hidden md:flex items-center gap-8 text-[11px] tracking-[0.3em] uppercase font-semibold text-white transition-colors duration-500">
+            <Link
+              href="/#films"
               onClick={(e) => handleNavClick(e, "#films")}
-              className="hover:opacity-60 transition cursor-pointer"
+              className="relative group hover:text-accent transition-colors cursor-pointer"
             >
               Films
+              <span className="absolute -bottom-2 left-0 w-full h-[1px] bg-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </Link>
-            
-            <Link 
-              href="/schedule" 
+
+            <Link
+              href="/schedule"
               className={`
-                transition cursor-pointer
-                ${pathname === "/schedule" ? "text-accent opacity-100" : "hover:opacity-60"}
+                relative group transition-colors cursor-pointer
+                ${pathname === "/schedule" ? "text-accent" : "hover:text-accent"}
               `}
             >
               Schedule
+              <span className={`absolute -bottom-2 left-0 w-full h-[1px] bg-accent transform transition-transform duration-300 origin-left ${pathname === "/schedule" ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`} />
             </Link>
-            
-            <Link 
+
+            <Link
               href="/#about"
               onClick={(e) => handleNavClick(e, "#about")}
-              className="hover:opacity-60 transition cursor-pointer"
+              className="relative group hover:text-accent transition-colors cursor-pointer"
             >
               About
+              <span className="absolute -bottom-2 left-0 w-full h-[1px] bg-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+            </Link>
+
+            {/* MY TICKETS BUTTON */}
+            <Link
+              href="/my-tickets"
+              className="bg-[#b00000] text-white px-5 py-2 rounded text-[10px] uppercase tracking-[0.2em] hover:bg-white hover:!text-black transition-all duration-300 shadow-[0_0_10px_rgba(176,0,0,0.5)] hover:shadow-[0_0_20px_rgba(255,255,255,0.5)] transform hover:scale-105 ml-4"
+            >
+              My Tickets
             </Link>
           </div>
 
           {/* MOBILE MENU TOGGLE (Visible on Mobile) */}
-          <button 
+          <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden relative z-50 text-white p-2 focus:outline-none"
           >
@@ -129,28 +141,42 @@ export default function Navbar() {
             className="fixed inset-0 z-40 bg-black flex flex-col items-center justify-center md:hidden"
           >
             <div className="navbar-texture opacity-30" />
-            
+
             <div className="relative z-10 flex flex-col gap-8 text-center">
-              <Link 
-                href="/#films" 
+              <Link
+                href="/#films"
                 onClick={(e) => handleNavClick(e, "#films")}
                 className="text-3xl font-ostwall uppercase text-white hover:text-accent transition-colors"
               >
                 Films
               </Link>
-              <Link 
-                href="/schedule" 
+              <Link
+                href="/schedule"
                 onClick={() => setMobileMenuOpen(false)}
                 className={`text-3xl font-ostwall uppercase transition-colors ${pathname === "/schedule" ? "text-accent" : "text-white hover:text-accent"}`}
               >
                 Schedule
               </Link>
-              <Link 
-                href="/#about" 
+              <Link
+                href="/#about"
                 onClick={(e) => handleNavClick(e, "#about")}
                 className="text-3xl font-ostwall uppercase text-white hover:text-accent transition-colors"
               >
                 About
+              </Link>
+              <Link
+                href="/#films"
+                onClick={(e) => handleNavClick(e, "#films")}
+                className="text-3xl font-ostwall uppercase text-white hover:text-accent transition-colors"
+              >
+                Register
+              </Link>
+              <Link
+                href="/my-tickets"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-2xl font-ostwall uppercase text-accent hover:text-white transition-colors mt-4 border-b border-accent/50 pb-1"
+              >
+                My Tickets
               </Link>
             </div>
           </motion.div>

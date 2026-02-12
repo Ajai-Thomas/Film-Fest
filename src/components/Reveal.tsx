@@ -14,6 +14,7 @@ export default function Reveal({ children, delay = 0 }: RevealProps) {
       whileInView={{ opacity: 1, y: 0 }} // Move to normal position
       viewport={{ once: true, margin: "-100px" }} // Trigger when 100px into view
       transition={{ duration: 0.8, ease: "easeOut", delay }}
+      className="relative"
     >
       {children}
     </motion.div>
