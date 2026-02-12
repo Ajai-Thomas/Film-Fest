@@ -1,11 +1,15 @@
+/* src/components/FilmCard.tsx */
+import Link from "next/link";
+
 type Film = {
+  slug: string; // Added slug prop
   title: string;
   director: string;
   poster: string;
   index?: number;
 };
 
-export default function FilmCard({ title, director, poster, index }: Film) {
+export default function FilmCard({ slug, title, director, poster, index }: Film) {
   return (
     <div className="
       group relative 
@@ -29,7 +33,7 @@ export default function FilmCard({ title, director, poster, index }: Film) {
         "
       />
 
-      {/* 2. BLACK GRADIENT (Bottom only) */}
+      {/* 2. BLACK GRADIENT */}
       <div className="
         absolute inset-0 
         bg-gradient-to-t from-black via-black/60 to-transparent 
@@ -38,10 +42,10 @@ export default function FilmCard({ title, director, poster, index }: Film) {
         z-10
       " />
       
-      {/* 3. Red Tint on Hover */}
+      {/* 3. Red Tint */}
       <div className="absolute inset-0 bg-accent mix-blend-multiply opacity-0 transition duration-500 group-hover:opacity-40 z-10" />
 
-      {/* 4. Content Layout */}
+      {/* 4. Content */}
       <div className="absolute inset-0 flex flex-col justify-between p-4 z-20">
         
         {/* Top Number */}
@@ -51,7 +55,7 @@ export default function FilmCard({ title, director, poster, index }: Film) {
            </span>
         </div>
 
-        {/* Bottom Text Info */}
+        {/* Bottom Info */}
         <div className="translate-y-4 transition-transform duration-500 group-hover:translate-y-0">
           
           <h3 className="text-xl font-ostwall leading-none uppercase text-white mb-2 drop-shadow-md">
@@ -65,17 +69,20 @@ export default function FilmCard({ title, director, poster, index }: Film) {
             </p>
           </div>
 
-          {/* Register Button */}
-          {/* FIXED: Changed hover:bg-accent to hover:bg-[#b00000] so the red background appears */}
+          {/* Register Button (Changed to Link) */}
           <div className="
             max-h-0 opacity-0 
             group-hover:max-h-[60px] group-hover:opacity-100 
             transition-all duration-500 ease-out
           ">
              <div className="pt-4">
-               <span className="inline-block text-[10px] font-black tracking-[0.3em] uppercase bg-white text-black px-2 py-1.5 hover:bg-[#b00000] hover:text-white transition-colors">
+               {/* LINK TO REGISTRATION PAGE */}
+               <Link 
+                 href={`/register/${slug}`}
+                 className="inline-block text-[10px] font-black tracking-[0.3em] uppercase bg-white text-black px-2 py-1.5 hover:bg-[#b00000] hover:text-white transition-colors"
+               >
                  Register Now
-               </span>
+               </Link>
              </div>
           </div>
 

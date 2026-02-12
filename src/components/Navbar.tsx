@@ -1,19 +1,20 @@
+/* src/components/Navbar.tsx */
 "use client";
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link"; // Import Link for page navigation
-import { usePathname } from "next/navigation"; // To check current page
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useLenis } from "lenis/react";
 import { motion } from "framer-motion";
 
 export default function Navbar() {
   const [dark, setDark] = useState(false);
   const lenis = useLenis();
-  const pathname = usePathname(); // Get current route (e.g., "/" or "/schedule")
+  const pathname = usePathname();
   const isHomePage = pathname === "/";
 
-  // Handle Scroll Logic for background change
+  // Handle Scroll Logic (Transparent -> Black)
   useEffect(() => {
     const onScroll = () => {
       const triggerPoint = window.innerHeight * 0.85;
@@ -23,14 +24,12 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Handle Navigation
+  // Handle Smooth Scroll Navigation
   const handleNavClick = (e: React.MouseEvent, targetId: string) => {
     if (isHomePage) {
-      // If on Home, scroll smoothly
       e.preventDefault();
       lenis?.scrollTo(targetId, { duration: 1.5, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
     }
-    // If NOT on Home, let the Link tag handle the navigation to "/"
   };
 
   return (
@@ -41,19 +40,19 @@ export default function Navbar() {
       className={`
         fixed top-0 left-0 right-0 z-50
         transition-colors duration-500
-        ${dark || !isHomePage ? "bg-black" : "bg-transparent"} 
-        /* Always black on Schedule page, transparent/black on Home */
+        ${dark ? "bg-black" : "bg-transparent"}
         overflow-hidden
       `}
     >
+      {/* Grain overlay */}
       <div className="navbar-texture" />
 
       <div className="relative z-10 flex items-center justify-between px-8 py-3">
         
-        {/* LOGO - Always links to Home */}
+        {/* LOGO - ALWAYS WHITE */}
         <Link href="/">
           <Image
-            src={dark || !isHomePage ? "/FF-26(white).png" : "/FF-26.png"}
+            src="/FF-26(white).png" 
             alt="TKM FLF 26"
             width={64}
             height={20}
@@ -61,19 +60,18 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* NAV LINKS */}
+        {/* NAV LINKS - ALWAYS WHITE */}
         <div
-          className={`
+          className="
             flex gap-10
             text-[11px]
             tracking-[0.38em]
             uppercase
             font-semibold
             transition-colors duration-500
-            ${dark || !isHomePage ? "text-white" : "text-black"}
-          `}
+            text-white
+          "
         >
-          {/* FILMS LINK */}
           <Link 
             href="/#films" 
             onClick={(e) => handleNavClick(e, "#films")}
@@ -82,10 +80,13 @@ export default function Navbar() {
             Films
           </Link>
           
-          {/* SCHEDULE LINK */}
           <Link 
             href="/schedule" 
-            className="hover:opacity-60 transition cursor-pointer"
+            className={`
+              transition cursor-pointer
+              /* Active State: Bright Red if on Schedule page */
+              ${pathname === "/schedule" ? "text-accent opacity-100" : "hover:opacity-60"}
+            `}
           >
             Schedule
           </Link>

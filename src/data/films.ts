@@ -1,0 +1,398 @@
+/* src/data/films.ts */
+
+export interface FilmData {
+  slug: string; // unique ID for the URL
+  title: string;
+  director: string;
+  poster: string;
+  day: string;
+  date: string;
+  time: string;
+  venue: string;
+  duration: string;
+  year?: string;
+  language?: string;
+}
+
+export const filmsData: FilmData[] = [
+  // --- DAY 2 (Feb 14) ---
+  {
+    slug: "corpse-bride",
+    title: "Corpse Bride",
+    director: "Tim Burton",
+    poster: "/films/corpsebride.jpg",
+    day: "Day 02",
+    date: "Feb 14",
+    time: "08:00 AM",
+    venue: "Arch Seminar Hall",
+    duration: "1hr 17min",
+    year: "2005",
+    language: "English"
+  },
+  {
+    slug: "50-50",
+    title: "50/50",
+    director: "Jonathan Levine",
+    poster: "/films/5050.jpg",
+    day: "Day 02",
+    date: "Feb 14",
+    time: "08:00 AM",
+    venue: "EEE Seminar Hall",
+    duration: "1hr 40min",
+    year: "2011",
+    language: "English"
+  },
+  {
+    slug: "flow",
+    title: "Flow",
+    director: "Gints Zilbalodis",
+    poster: "/films/flow.jpg",
+    day: "Day 02",
+    date: "Feb 14",
+    time: "08:00 AM",
+    venue: "Chemical Seminar Hall",
+    duration: "1hr 25min",
+    year: "2024",
+    language: "Animation"
+  },
+  {
+    slug: "hereditary",
+    title: "Hereditary",
+    director: "Ari Aster",
+    poster: "/films/hereditary.jpg",
+    day: "Day 02",
+    date: "Feb 14",
+    time: "09:20 AM",
+    venue: "Arch Seminar Hall",
+    duration: "2hr 7min",
+    year: "2018",
+    language: "English"
+  },
+  {
+    slug: "city-of-god",
+    title: "City of God",
+    director: "Fernando Meirelles",
+    poster: "/films/cityofgod.jpg",
+    day: "Day 02",
+    date: "Feb 14",
+    time: "09:30 AM",
+    venue: "Chemical Seminar Hall",
+    duration: "2hr 10min",
+    year: "2002",
+    language: "Portuguese"
+  },
+  {
+    slug: "lady-bird",
+    title: "Lady Bird",
+    director: "Greta Gerwig",
+    poster: "/films/ladybird.jpg",
+    day: "Day 02",
+    date: "Feb 14",
+    time: "11:30 AM",
+    venue: "Arch Seminar Hall",
+    duration: "1hr 35min",
+    year: "2017",
+    language: "English"
+  },
+  {
+    slug: "atonement",
+    title: "Atonement",
+    director: "Joe Wright",
+    poster: "/films/atonement.jpg",
+    day: "Day 02",
+    date: "Feb 14",
+    time: "11:40 AM",
+    venue: "Chemical Seminar Hall",
+    duration: "2hr 3min",
+    year: "2007",
+    language: "English"
+  },
+  {
+    slug: "kd",
+    title: "KD (A) Karuppudurai",
+    director: "Madhumita",
+    poster: "/films/kd.jpg",
+    day: "Day 02",
+    date: "Feb 14",
+    time: "01:05 PM",
+    venue: "Arch Seminar Hall",
+    duration: "2hr 3min",
+    year: "2019",
+    language: "Tamil"
+  },
+  {
+    slug: "silenced",
+    title: "Silenced",
+    director: "Hwang Dong-hyuk",
+    poster: "/films/silenced.jpg",
+    day: "Day 02",
+    date: "Feb 14",
+    time: "01:45 PM",
+    venue: "Chemical Seminar Hall",
+    duration: "2hr 5min",
+    year: "2011",
+    language: "Korean"
+  },
+  {
+    slug: "welcome-home",
+    title: "Welcome Home",
+    director: "TBA",
+    poster: "/films/welcomehome.jpg",
+    day: "Day 02",
+    date: "Feb 14",
+    time: "03:00 PM",
+    venue: "EEE Seminar Hall",
+    duration: "2hr 5min",
+    year: "2020",
+    language: "Hindi"
+  },
+  {
+    slug: "call-me-by-your-name",
+    title: "Call Me By Your Name",
+    director: "Luca Guadagnino",
+    poster: "/films/callmebyyourname.jpg",
+    day: "Day 02",
+    date: "Feb 14",
+    time: "03:10 PM",
+    venue: "Arch Seminar Hall",
+    duration: "2hr 10min",
+    year: "2017",
+    language: "English"
+  },
+  {
+    slug: "the-lunchbox",
+    title: "The Lunchbox",
+    director: "Ritesh Batra",
+    poster: "/films/thelunchbox.jpg",
+    day: "Day 02",
+    date: "Feb 14",
+    time: "03:30 PM",
+    venue: "Auditorium",
+    duration: "1hr 44min",
+    year: "2013",
+    language: "Hindi"
+  },
+  {
+    slug: "pregnant-widow",
+    title: "A Pregnant Widow",
+    director: "TBA",
+    poster: "/films/apregnantwidow.jpg",
+    day: "Day 02",
+    date: "Feb 14",
+    time: "05:00 PM",
+    venue: "APJ Hall",
+    duration: "2hr 5min",
+    year: "2025",
+    language: "Malayalam"
+  },
+  {
+    slug: "perfect-blue",
+    title: "Perfect Blue",
+    director: "Satoshi Kon",
+    poster: "/films/perfectblue.jpg",
+    day: "Day 02",
+    date: "Feb 14",
+    time: "05:00 PM",
+    venue: "PTA Hall",
+    duration: "1hr 21min",
+    year: "1997",
+    language: "Japanese"
+  },
+  {
+    slug: "forgotten",
+    title: "Forgotten",
+    director: "Jang Hang-jun",
+    poster: "/films/forgotten.jpg",
+    day: "Day 02",
+    date: "Feb 14",
+    time: "05:15 PM",
+    venue: "EEE Seminar Hall",
+    duration: "1hr 49min",
+    year: "2017",
+    language: "Korean"
+  },
+  {
+    slug: "host",
+    title: "Host",
+    director: "Rob Savage",
+    poster: "/films/host.jpg",
+    day: "Day 02",
+    date: "Feb 14",
+    time: "05:20 PM",
+    venue: "Arch Seminar Hall",
+    duration: "56min",
+    year: "2020",
+    language: "English"
+  },
+
+  // --- DAY 3 (Feb 15) ---
+  {
+    slug: "be-with-you",
+    title: "Be With You",
+    director: "Nobuhiro Doi",
+    poster: "/films/placeholder.jpg",
+    day: "Day 03",
+    date: "Feb 15",
+    time: "07:00 AM",
+    venue: "Auditorium",
+    duration: "1hr 59min",
+    year: "2004",
+    language: "Japanese"
+  },
+  {
+    slug: "gran-torino",
+    title: "Gran Torino",
+    director: "Clint Eastwood",
+    poster: "/films/placeholder.jpg",
+    day: "Day 03",
+    date: "Feb 15",
+    time: "07:00 AM",
+    venue: "PTA Hall",
+    duration: "1hr 56min",
+    year: "2008",
+    language: "English"
+  },
+  {
+    slug: "coraline",
+    title: "Coraline",
+    director: "Henry Selick",
+    poster: "/films/placeholder.jpg",
+    day: "Day 03",
+    date: "Feb 15",
+    time: "07:00 AM",
+    venue: "Arch Seminar Hall",
+    duration: "1hr 40min",
+    year: "2009",
+    language: "English"
+  },
+  {
+    slug: "purusha-pretham",
+    title: "Purusha Pretham",
+    director: "Krishand",
+    poster: "/films/placeholder.jpg",
+    day: "Day 03",
+    date: "Feb 15",
+    time: "07:00 AM",
+    venue: "EEE Seminar Hall",
+    duration: "2hr 32min",
+    year: "2023",
+    language: "Malayalam"
+  },
+  {
+    slug: "cinema-paradiso",
+    title: "Cinema Paradiso",
+    director: "Giuseppe Tornatore",
+    poster: "/films/placeholder.jpg",
+    day: "Day 03",
+    date: "Feb 15",
+    time: "08:50 AM",
+    venue: "Arch Seminar Hall",
+    duration: "2hr 35min",
+    year: "1988",
+    language: "Italian"
+  },
+  {
+    slug: "grave-of-fireflies",
+    title: "Grave of the Fireflies",
+    director: "Isao Takahata",
+    poster: "/films/placeholder.jpg",
+    day: "Day 03",
+    date: "Feb 15",
+    time: "09:00 AM",
+    venue: "Auditorium",
+    duration: "1hr 29min",
+    year: "1988",
+    language: "Japanese"
+  },
+  {
+    slug: "battle-royale",
+    title: "Battle Royale",
+    director: "Kinji Fukasaku",
+    poster: "/films/placeholder.jpg",
+    day: "Day 03",
+    date: "Feb 15",
+    time: "09:00 AM",
+    venue: "PTA Hall",
+    duration: "2hr 2min",
+    year: "2000",
+    language: "Japanese"
+  },
+  {
+    slug: "bulbbul",
+    title: "Bulbbul",
+    director: "Anvita Dutt",
+    poster: "/films/placeholder.jpg",
+    day: "Day 03",
+    date: "Feb 15",
+    time: "09:35 AM",
+    venue: "EEE Seminar Hall",
+    duration: "1hr 34min",
+    year: "2020",
+    language: "Hindi"
+  },
+  {
+    slug: "gargi",
+    title: "Gargi",
+    director: "Gautham Ramachandran",
+    poster: "/films/placeholder.jpg",
+    day: "Day 03",
+    date: "Feb 15",
+    time: "11:05 AM",
+    venue: "PTA Hall",
+    duration: "2hr 20min",
+    year: "2022",
+    language: "Tamil"
+  },
+  {
+    slug: "aavasavyuham",
+    title: "Aavasavyuham",
+    director: "Krishand",
+    poster: "/films/placeholder.jpg",
+    day: "Day 03",
+    date: "Feb 15",
+    time: "11:10 AM",
+    venue: "EEE Seminar Hall",
+    duration: "1hr 55min",
+    year: "2022",
+    language: "Malayalam"
+  },
+  {
+    slug: "autopsy-of-jane-doe",
+    title: "The Autopsy of Jane Doe",
+    director: "André Øvredal",
+    poster: "/films/placeholder.jpg",
+    day: "Day 03",
+    date: "Feb 15",
+    time: "11:30 AM",
+    venue: "Arch Seminar Hall",
+    duration: "1hr 26min",
+    year: "2016",
+    language: "English"
+  },
+  {
+    slug: "monkey-man",
+    title: "Monkey Man",
+    director: "Dev Patel",
+    poster: "/films/placeholder.jpg",
+    day: "Day 03",
+    date: "Feb 15",
+    time: "12:10 PM",
+    venue: "Arch Seminar Hall",
+    duration: "2hr 1min",
+    year: "2024",
+    language: "English"
+  },
+  {
+    slug: "chokher-bali",
+    title: "Chokher Bali",
+    director: "Rituparno Ghosh",
+    poster: "/films/placeholder.jpg",
+    day: "Day 03",
+    date: "Feb 15",
+    time: "12:30 PM",
+    venue: "Chemical Seminar Hall",
+    duration: "2hr 47min",
+    year: "2003",
+    language: "Bengali"
+  },
+];
