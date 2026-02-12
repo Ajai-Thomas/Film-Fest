@@ -43,21 +43,21 @@ export default function RegisterPage({ params }: { params: Promise<{ slug: strin
         style={{ backgroundImage: 'url("/textures/grain.png")', backgroundSize: '260px' }} 
       />
 
-      <div className="relative z-10 pt-32 px-6 pb-20 max-w-6xl mx-auto min-h-screen flex flex-col justify-center">
+      <div className="relative z-10 pt-24 md:pt-32 px-4 md:px-6 pb-20 max-w-6xl mx-auto min-h-screen flex flex-col justify-center">
         
         <Reveal>
           <Link href="/#films" className="text-white/50 hover:text-white transition-colors text-xs tracking-[0.2em] uppercase mb-8 inline-block">
             ← Back to Films
           </Link>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-start">
             
             {/* LEFT: Event Details */}
             <div>
-              <span className="block text-accent text-sm tracking-[0.4em] font-bold uppercase mb-4">
+              <span className="block text-accent text-xs md:text-sm tracking-[0.4em] font-bold uppercase mb-4">
                 Event Registration
               </span>
-              <h1 className="text-5xl md:text-7xl font-ostwall uppercase leading-[0.9] mb-8">
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-ostwall uppercase leading-[0.9] mb-8">
                 {film.title}
               </h1>
 
@@ -92,7 +92,7 @@ export default function RegisterPage({ params }: { params: Promise<{ slug: strin
             </div>
 
             {/* RIGHT: Registration Form */}
-            <div className="bg-white/5 border border-white/10 p-8 md:p-12 relative overflow-hidden">
+            <div className="bg-white/5 border border-white/10 p-6 md:p-12 relative overflow-hidden">
               
               {!submitted ? (
                 <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
@@ -161,7 +161,7 @@ export default function RegisterPage({ params }: { params: Promise<{ slug: strin
                     </label>
                   </div>
 
-                  {/* SUBMIT BUTTON - FIXED HOVER */}
+                  {/* SUBMIT BUTTON */}
                   <button
                     type="submit"
                     className="

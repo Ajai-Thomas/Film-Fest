@@ -4,6 +4,7 @@ import { useState } from "react";
 import Navbar from "../../components/Navbar";
 import Reveal from "../../components/Reveal";
 
+// --- DATA FROM PDF ---
 const scheduleData = [
   {
     date: "Feb 13 (Fri)",
@@ -70,24 +71,23 @@ export default function SchedulePage() {
            style={{ backgroundImage: 'url("/textures/grain.png")', backgroundSize: '260px' }} 
       />
 
-      <div className="relative z-10 pt-40 px-6 pb-20 max-w-6xl mx-auto">
+      <div className="relative z-10 pt-32 md:pt-40 px-4 md:px-6 pb-20 max-w-6xl mx-auto">
         
         <Reveal>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20 border-b border-white/20 pb-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12 md:mb-20 border-b border-white/20 pb-8">
             <div>
-              {/* Removed "Program Timeline" label */}
-              <h1 className="text-6xl md:text-8xl font-ostwall uppercase leading-none">
+              <h1 className="text-4xl md:text-6xl lg:text-8xl font-ostwall uppercase leading-none">
                 Festival<br />Schedule
               </h1>
             </div>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-2 md:gap-4">
               {scheduleData.map((item, index) => (
                 <button
                   key={index}
                   onClick={() => setActiveDay(index)}
                   className={`
-                    px-6 py-3 border transition-all duration-300 uppercase tracking-widest text-xs font-bold
+                    px-4 py-2 md:px-6 md:py-3 border transition-all duration-300 uppercase tracking-widest text-[10px] md:text-xs font-bold
                     ${activeDay === index 
                       ? "bg-accent border-accent text-white" 
                       : "border-white/20 text-white/50 hover:border-white hover:text-white"
@@ -107,12 +107,12 @@ export default function SchedulePage() {
               <div 
                 className="
                   group relative flex flex-col md:flex-row md:items-center 
-                  border-b border-white/10 py-6 hover:bg-white/5 transition-colors px-4
+                  border-b border-white/10 py-6 hover:bg-white/5 transition-colors px-2 md:px-4
                   cursor-default
                 "
               >
-                <div className="w-40 shrink-0 mb-2 md:mb-0">
-                  <span className="font-ostwall text-xl md:text-2xl text-white/40 group-hover:text-accent transition-colors">
+                <div className="w-full md:w-40 shrink-0 mb-1 md:mb-0">
+                  <span className="font-ostwall text-lg md:text-2xl text-white/40 group-hover:text-accent transition-colors">
                     {event.time}
                   </span>
                 </div>
