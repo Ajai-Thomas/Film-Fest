@@ -8,7 +8,9 @@ type DayKey = "Day 1" | "Day 2" | "Day 3";
 
 export default function FilmsSection() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [selectedDay, setSelectedDay] = useState<DayKey>("Day 2");
+  
+  // Change "Day 2" to "Day 1" to set the new default
+  const [selectedDay, setSelectedDay] = useState<DayKey>("Day 1");
 
   const currentFilms = useMemo(() => {
     const dayMap: Record<string, string> = {
@@ -56,7 +58,7 @@ export default function FilmsSection() {
           </div>
           
           <div className="mt-8 md:mt-0 flex flex-col items-start md:items-end gap-6">
-             <p className="text-white/60 text-xs tracking-widest uppercase max-w-[200px] text-left md:text-right">
+             <p className="text-white/60 text-xs tracking-widest uppercase max-w-50 text-left md:text-right">
                Curated films screening on {selectedDay}.
              </p>
 
