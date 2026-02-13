@@ -15,6 +15,20 @@ export interface FilmData {
 }
 
 export const filmsData: FilmData[] = [
+  // --- DAY 1 (Feb 13) ---
+  {
+    slug: "rifle-club",
+    title: "Rifle Club",
+    director: "Aashiq Abu",
+    poster: "/films/rifleclub.jpg",
+    day: "Day 01",
+    date: "Feb 13",
+    time: "06:00 PM",
+    venue: "Arch Seminar Hall",
+    duration: "2hr",
+    year: "2024",
+    language: "Malayalam"
+  },
   // --- DAY 2 (Feb 14) ---
   {
     slug: "corpse-bride",
@@ -398,7 +412,7 @@ export const filmsData: FilmData[] = [
   {
     slug: "victoria",
     title: "Victoria",
-    director: "TBA",
+    director: "Sivaranjini J",
     poster: "/films/victoria.jpg",
     day: "Day 03",
     date: "Feb 15",

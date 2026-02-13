@@ -10,6 +10,7 @@ const scheduleData = [
     date: "Feb 13 (Fri)",
     events: [
       { time: "06:30 PM", title: "Inaugural Ceremony", location: "Auditorium" },
+      { time: "06:00 PM", title: "Rifle Club", location: "Arch Seminar Hall" }
     ],
   },
   {
@@ -101,7 +102,7 @@ export default function SchedulePage() {
           </div>
         </Reveal>
 
-        <div className="space-y-4 min-h-[400px]">
+        <div className="space-y-4 min-h-100">
           {scheduleData[activeDay].events.map((event, i) => (
             <Reveal key={`${activeDay}-${i}`} delay={i * 0.05}>
               <div 
@@ -117,7 +118,7 @@ export default function SchedulePage() {
                   </span>
                 </div>
 
-                <div className="flex-grow">
+                <div className="grow">
                   <h3 className="text-xl md:text-2xl font-ostwall uppercase group-hover:translate-x-2 transition-transform duration-300">
                     {event.title}
                   </h3>
