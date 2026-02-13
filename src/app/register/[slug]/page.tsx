@@ -1,7 +1,7 @@
 /* src/app/register/[slug]/page.tsx */
 "use client";
 
-import { use, useState } from "react";
+import { use, useState, useEffect } from "react";
 import Navbar from "../../../components/Navbar";
 import Reveal from "../../../components/Reveal";
 import { filmsData } from "../../../data/films";
@@ -20,6 +20,30 @@ export default function RegisterPage({ params }: { params: Promise<{ slug: strin
 
   const [status, setStatus] = useState({ submitted: false, loading: false, message: "" });
   const [ticketData, setTicketData] = useState<any>(null);
+  const [statsData, setStatsData] = useState<any>(null);
+
+  // Fetch live stats
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stats/`);
+        const data = await res.json();
+        if (data.by_film) {
+          const currentFilmStats = data.by_film.find((f: any) => f.film__slug === slug);
+          if (currentFilmStats) {
+            setStatsData(currentFilmStats);
+          }
+        }
+      } catch (err) {
+        console.error("Failed to fetch stats", err);
+      }
+    };
+
+    fetchStats();
+    // Optional: Poll every 30s?
+    // const interval = setInterval(fetchStats, 30000);
+    // return () => clearInterval(interval);
+  }, [slug]);
 
   const film = filmsData.find((f) => f.slug === slug);
 
@@ -98,10 +122,24 @@ export default function RegisterPage({ params }: { params: Promise<{ slug: strin
             <div className="bg-white/5 border border-white/10 p-6 md:p-12 relative overflow-hidden">
               {!status.submitted ? (
                 <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
-                  <h3 className="font-ostwall text-3xl uppercase mb-6">Enter Details</h3>
+                  <div className="flex flex-col mb-6">
+                    <h3 className="font-ostwall text-3xl uppercase mb-2">Enter Details</h3>
+
+                    {/* Live Stats Display */}
+                    {statsData && (
+                      <div className={`text-xs font-bold uppercase tracking-widest mb-4 flex items-center gap-2 ${statsData.is_full ? 'text-red-500' : 'text-green-400'}`}>
+                        <span className="w-2 h-2 rounded-full bg-current animate-pulse"></span>
+                        {statsData.is_full ? "SOLD OUT" : `${statsData.count} / ${statsData.capacity} SPOTS FILLED`}
+                      </div>
+                    )}
+                  </div>
 
                   {/* Error Message */}
-                  {status.message && <p className="text-red-500 text-sm">{status.message}</p>}
+                  {status.message && (
+                    <div className={`p-4 mb-6 text-sm border ${status.message.toLowerCase().includes("housefull") ? "bg-red-500/10 border-red-500 text-red-500" : "bg-white/5 border-white/10 text-white/60"}`}>
+                      {status.message}
+                    </div>
+                  )}
 
                   <div className="relative group">
                     <input type="text" required placeholder=" " value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="peer w-full bg-transparent border-b border-white/20 py-3 text-lg focus:outline-none focus:border-accent transition-colors font-sans" />

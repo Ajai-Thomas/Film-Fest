@@ -178,9 +178,11 @@ export default function AdminPage() {
                         <p className="text-xs text-gray-500 uppercase mb-4 text-center tracking-widest">Registrations By Film</p>
                         <div className="flex flex-wrap justify-center gap-3">
                             {stats.by_film.map((s: any) => (
-                                <div key={s.film__slug} className="flex items-center bg-black/40 px-3 py-2 rounded border border-white/5 hover:border-white/20 transition-colors">
-                                    <span className="text-xs text-gray-300 mr-2 uppercase">{s.film__title}</span>
-                                    <span className="text-sm font-bold text-accent">{s.count}</span>
+                                <div key={s.film__slug} className={`flex items-center bg-black/40 px-3 py-2 rounded border ${s.is_full ? 'border-red-500/50' : 'border-white/5'} hover:border-white/20 transition-colors`}>
+                                    <span className="text-xs text-gray-300 mr-2 uppercase max-w-[150px] truncate">{s.film__title}</span>
+                                    <span className={`text-sm font-bold ${s.is_full ? 'text-red-400' : 'text-accent'}`}>
+                                        {s.count} <span className="text-white/30 text-[10px] font-normal">/ {s.capacity}</span>
+                                    </span>
                                 </div>
                             ))}
                         </div>
